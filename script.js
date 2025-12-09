@@ -33,3 +33,13 @@ const favoritesContainer = document.getElementById('favorites-container');
 const noFavorites = document.getElementById('no-favorites');
 const tipsList = document.getElementById('tips-list');
 
+// Initialize App
+document.addEventListener('DOMContentLoaded', async () => {
+    populateVibeDropdown();
+    loadFavoritesFromStorage();
+    await loadTipsData();
+    renderFavorites();
+    
+    generateBtn.addEventListener('click', generateLook);
+    saveFavoriteBtn.addEventListener('click', saveCurrentLookToFavorites);
+});
