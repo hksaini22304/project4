@@ -50,3 +50,73 @@ section h2 {
     font-size: 1.8rem;
     font-weight: 500;
 }
+
+/* Vibe Selection Section */
+.vibe-selection {
+    text-align: center;
+}
+
+.selection-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+.form-group {
+    width: 100%;
+    max-width: 400px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #6b4a5a;
+    font-weight: 400;
+}
+
+select {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #e8c5d8;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    background: white;
+    color: #333;
+    cursor: pointer;
+    transition: border-color 0.3s;
+}
+
+select:hover {
+    border-color: #d4b3e8;
+}
+
+select:focus {
+    outline: none;
+    border-color: #8b4a6b;
+}
+
+.generate-btn {
+    padding: 14px 40px;
+    background: linear-gradient(135deg, #f4c2c2 0%, #fec5e5 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 3px 8px rgba(139, 74, 107, 0.2);
+}
+
+.generate-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 12px rgba(139, 74, 107, 0.3);
+}
+
+.generate-btn:active {
+    transform: translateY(0);
+}
