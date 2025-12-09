@@ -204,3 +204,36 @@ async function generateLook() {
         lookCard.style.display = 'none';
     }
 }
+
+// Rendering Functions
+function renderCurrentLook() {
+    if (!state.currentLook) return;
+    
+    const look = state.currentLook;
+    
+    // Set mood and occasion with emojis
+    const moodEmojis = {
+        "Soft Glam": "✨",
+        "Clean Girl": "🌸",
+        "Coquette": "💕",
+        "Bold": "🔥",
+        "Grunge": "🖤"
+    };
+    const occasionEmojis = {
+        "everyday": "☀️",
+        "date-night": "🌙",
+        "party": "🎉",
+        "wedding": "💍",
+        "photoshoot": "📸"
+    };
+    
+    moodLabel.textContent = `${moodEmojis[look.mood] || "✨"} Mood: ${look.mood}`;
+    if (look.occasion) {
+        const occasionLabelText = look.occasion.split('-').map(word => 
+            word.charAt(0).toUpperCase() + word.slice(1)
+        ).join(' ');
+        occasionLabel.textContent = `${occasionEmojis[look.occasion] || "📅"} Occasion: ${occasionLabelText}`;
+        occasionLabel.style.display = 'block';
+    } else {
+        occasionLabel.style.display = 'none';
+    }
