@@ -403,3 +403,94 @@ select:focus {
     transform: translateY(0);
 }
 
+/* Favorites Section */
+.favorites-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.no-favorites {
+    text-align: center;
+    color: #999;
+    font-style: italic;
+    padding: 40px;
+    grid-column: 1 / -1;
+}
+
+.favorite-card {
+    background: #faf5f8;
+    border: 2px solid #f5d7e3;
+    border-radius: 10px;
+    padding: 20px;
+    animation: fadeIn 0.5s ease-in;
+}
+
+.favorite-card h3 {
+    color: #8b4a6b;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.favorite-card .mood-label {
+    font-size: 1rem;
+    margin-bottom: 5px;
+}
+
+.favorite-card .occasion-label {
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+}
+
+.favorite-card .color-swatches {
+    margin-bottom: 15px;
+}
+
+.favorite-card .color-swatch {
+    width: 40px;
+    height: 40px;
+}
+
+.favorite-card .products-container {
+    grid-template-columns: 1fr;
+    margin-bottom: 15px;
+}
+
+.favorite-card .product-category {
+    padding: 12px;
+}
+
+.favorite-card .product-category h4 {
+    font-size: 1rem;
+}
+
+.favorite-card .product-category li {
+    font-size: 0.85rem;
+}
+
+.favorite-card .product-image {
+    max-width: 120px;
+}
+
+.favorite-card .product-link {
+    font-size: 0.8rem;
+}
+
+.remove-btn {
+    width: 100%;
+    padding: 10px;
+    background: #ffcccc;
+    color: #b91c1c;
+    border: 1px solid #ffaaaa;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.remove-btn:hover {
+    background: #ffaaaa;
+}
