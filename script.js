@@ -61,3 +61,17 @@ function populateVibeDropdown() {
         vibeSelect.appendChild(option);
     });
 }
+
+// Load Tips Data
+async function loadTipsData() {
+    try {
+        const response = await fetch('tips.json');
+        if (!response.ok) {
+            throw new Error('Failed to load tips');
+        }
+        state.tipsData = await response.json();
+    } catch (error) {
+        console.error('Error loading tips:', error);
+        state.tipsData = null;
+    }
+}
