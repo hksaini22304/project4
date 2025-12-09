@@ -237,3 +237,40 @@ function renderCurrentLook() {
     } else {
         occasionLabel.style.display = 'none';
     }
+
+     // Render color swatches with click handlers
+    colorSwatches.innerHTML = '';
+    look.palette.forEach((hex, index) => {
+        const swatch = document.createElement('div');
+        swatch.className = 'color-swatch clickable-swatch';
+        swatch.style.backgroundColor = hex;
+        swatch.title = `Click to adjust: ${hex}`;
+        swatch.dataset.index = index;
+        swatch.dataset.hex = hex;
+        
+        // Add click handler
+        swatch.addEventListener('click', () => openColorPicker(swatch, index, look));
+        
+        // Add visual indicator that it's clickable
+        const editIcon = document.createElement('span');
+        editIcon.className = 'edit-icon';
+        editIcon.textContent = '✏️';
+        editIcon.style.display = 'none';
+        swatch.appendChild(editIcon);
+        
+        // Show edit icon on hover
+        swatch.addEventListener('mouseenter', () => {
+            editIcon.style.display = 'block';
+        });
+        swatch.addEventListener('mouseleave', () => {
+            editIcon.style.display = 'none';
+        });
+        
+        colorSwatches.appendChild(swatch);
+    });
+    
+    // Add reset button if palette has been modified
+    if (JSON.stringify(look.palette) !== JSON.stringify(look.originalPalette)) {
+        addResetPaletteButton(look);
+    }
+    
