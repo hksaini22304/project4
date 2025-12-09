@@ -284,3 +284,60 @@ function renderCurrentLook() {
     // Show the look card
     lookCard.style.display = 'block';
 }
+
+function renderProductList(listElement, products) {
+    listElement.innerHTML = '';
+    
+    if (products.length === 0) {
+        const li = document.createElement('li');
+        li.textContent = '😔 No products available';
+        li.style.color = '#999';
+        li.style.fontStyle = 'italic';
+        listElement.appendChild(li);
+        return;
+    }
+    
+    products.forEach(product => {
+        const li = document.createElement('li');
+        li.className = 'product-item';
+        
+        // Create product image if available
+        if (product.image_link) {
+            const img = document.createElement('img');
+            img.src = product.image_link;
+            img.alt = `${product.brand || 'Unknown'} - ${product.name || 'Unnamed Product'}`;
+            img.className = 'product-image';
+            img.onerror = function() {
+                // Hide image if it fails to load
+                this.style.display = 'none';
+            };
+            li.appendChild(img);
+        }
+        
+        // Create product link
+        const link = document.createElement('a');
+        link.href = product.product_link || '#';
+        link.target = '_blank';
+        link.className = 'product-link';
+        link.textContent = `${product.brand || 'Unknown'} - ${product.name || 'Unnamed Product'}`;
+        li.appendChild(link);
+        
+        listElement.appendChild(li);
+    });
+}
+
+function renderFavorites() {
+    favoritesContainer.innerHTML = '';
+    
+    if (state.favoriteLooks.length === 0) {
+        noFavorites.style.display = 'block';
+        return;
+    }
+    
+    noFavorites.style.display = 'none';
+    
+    state.favoriteLooks.forEach(look => {
+        const card = renderFavoriteCard(look);
+        favoritesContainer.appendChild(card);
+    });
+}
