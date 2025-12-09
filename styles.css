@@ -120,3 +120,43 @@ select:focus {
 .generate-btn:active {
     transform: translateY(0);
 }
+
+/* Look Result Section */
+.look-result {
+    min-height: 200px;
+}
+
+.loading-message, .error-message {
+    text-align: center;
+    padding: 40px;
+    font-size: 1.2rem;
+    color: #6b4a5a;
+}
+
+.error-message {
+    color: #b91c1c;
+    background: #ffe0e0;
+    border-radius: 8px;
+    margin: 20px 0;
+}
+
+.look-card {
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.look-info {
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #f5d7e3;
+}
