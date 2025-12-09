@@ -143,3 +143,17 @@ async function fetchProductsForLook(vibeKey) {
                 return [];
             })
     );
+
+      try {
+        const results = await Promise.all(productPromises);
+        
+        return {
+            face: results[1] || [], // blush
+            eyes: results[2] || [], // eyeshadow
+            lips: results[0] || []  // lipstick
+        };
+    } catch (error) {
+        console.error('Error fetching products:', error);
+        throw error;
+    }
+}
