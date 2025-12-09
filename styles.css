@@ -623,3 +623,12 @@ select:focus {
     background: #e8c5d8;
     transform: translateY(-2px);
 }
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 30px 20px;
+    color: #6b4a5a;
+    font-size: 0.9rem;
+    margin-top: 40px;
+}
