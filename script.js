@@ -102,3 +102,23 @@ function saveFavoritesToStorage() {
         console.error('Error saving favorites to storage:', error);
     }
 }
+
+// API Fetch Functions
+async function fetchPaletteForVibe(vibeKey) {
+    const baseHex = VIBES[vibeKey].baseHex;
+    const url = `https://www.thecolorapi.com/scheme?hex=${baseHex}&mode=analogic&count=5`;
+    
+    try {
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error('Failed to fetch color palette');
+        }
+        const data = await response.json();
+          // Extract hex colors from the API response
+        const colors = data.colors.map(color => color.hex.value);
+        return colors;
+    } catch (error) {
+        console.error('Error fetching palette:', error);
+        throw error;
+    }
+} 
