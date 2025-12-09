@@ -273,4 +273,14 @@ function renderCurrentLook() {
     if (JSON.stringify(look.palette) !== JSON.stringify(look.originalPalette)) {
         addResetPaletteButton(look);
     }
+     // Render products
+    renderProductList(faceList, look.products.face);
+    renderProductList(eyesList, look.products.eyes);
+    renderProductList(lipsList, look.products.lips);
     
+    // Render tips
+    renderTips(look.mood);
+    
+    // Show the look card
+    lookCard.style.display = 'block';
+}
