@@ -157,3 +157,50 @@ async function fetchProductsForLook(vibeKey) {
         throw error;
     }
 }
+
+// Generate Look Function
+async function generateLook() {
+    const vibeKey = vibeSelect.value;
+    const occasion = occasionSelect.value;
+    
+    if (!vibeKey) {
+        alert('✨ Please select a vibe first!');
+        return;
+    }
+    
+    // Show loading state
+    loadingMessage.style.display = 'block';
+    errorMessage.style.display = 'none';
+    lookCard.style.display = 'none';
+    
+    try {
+        // Fetch palette and products
+        const [palette, products] = await Promise.all([
+            fetchPaletteForVibe(vibeKey),
+            fetchProductsForLook(vibeKey)
+        ]);
+        
+        // Construct look object
+        const look = {
+            id: Date.now(),
+            mood: VIBES[vibeKey].label,
+            occasion: occasion || null,
+            palette: palette,
+            originalPalette: [...palette], // Store original for reset
+            products: products
+        };
+        
+        // Save to state
+        state.currentLook = look;
+        
+        // Hide loading, show result
+        loadingMessage.style.display = 'none';
+        renderCurrentLook();
+        
+    } catch (error) {
+        console.error('Error generating look:', error);
+        loadingMessage.style.display = 'none';
+        errorMessage.style.display = 'block';
+        lookCard.style.display = 'none';
+    }
+}
