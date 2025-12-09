@@ -43,3 +43,21 @@ document.addEventListener('DOMContentLoaded', async () => {
     generateBtn.addEventListener('click', generateLook);
     saveFavoriteBtn.addEventListener('click', saveCurrentLookToFavorites);
 });
+
+// Populate Vibe Dropdown
+function populateVibeDropdown() {
+    const vibeEmojis = {
+        "soft-glam": "✨",
+        "clean-girl": "🌸",
+        "coquette": "💕",
+        "bold": "🔥",
+        "grunge": "🖤"
+    };
+    
+    Object.keys(VIBES).forEach(vibeKey => {
+        const option = document.createElement('option');
+        option.value = vibeKey;
+        option.textContent = `${vibeEmojis[vibeKey] || "✨"} ${VIBES[vibeKey].label}`;
+        vibeSelect.appendChild(option);
+    });
+}
