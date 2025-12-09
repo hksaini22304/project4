@@ -122,3 +122,24 @@ async function fetchPaletteForVibe(vibeKey) {
         throw error;
     }
 } 
+async function fetchProductsForLook(vibeKey) {
+    const productTypes = ['lipstick', 'blush', 'eyeshadow'];
+    const productPromises = productTypes.map(type => 
+        fetch(`https://makeup-api.herokuapp.com/api/v1/products.json?product_type=${type}`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Failed to fetch ${type} products`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                // Randomly select 1-2 items from each category
+                const count = Math.floor(Math.random() * 2) + 1;
+                const shuffled = [...data].sort(() => 0.5 - Math.random());
+                return shuffled.slice(0, count);
+            })
+            .catch(error => {
+                console.error(`Error fetching ${type}:`, error);
+                return [];
+            })
+    );
