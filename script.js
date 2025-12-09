@@ -75,3 +75,30 @@ async function loadTipsData() {
         state.tipsData = null;
     }
 }
+
+// LocalStorage Helpers
+function loadFavoritesFromStorage() {
+    const stored = localStorage.getItem('favoriteLooks');
+    if (stored) {
+        try {
+            state.favoriteLooks = JSON.parse(stored);
+            // Ensure all favorites have originalPalette for backwards compatibility
+            state.favoriteLooks.forEach(look => {
+                if (!look.originalPalette && look.palette) {
+                    look.originalPalette = [...look.palette];
+                }
+            });
+        } catch (error) {
+            console.error('Error loading favorites from storage:', error);
+            state.favoriteLooks = [];
+        }
+    }
+}
+
+function saveFavoritesToStorage() {
+    try {
+        localStorage.setItem('favoriteLooks', JSON.stringify(state.favoriteLooks));
+    } catch (error) {
+        console.error('Error saving favorites to storage:', error);
+    }
+}
