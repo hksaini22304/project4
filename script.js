@@ -388,3 +388,12 @@ function renderFavoriteCard(look) {
         <button class="remove-btn" data-id="${look.id}">🗑️ Remove from Favorites</button>
     `;
     
+     // Render color swatches
+    const swatchesContainer = card.querySelector('.color-swatches');
+    look.palette.forEach(hex => {
+        const swatch = document.createElement('div');
+        swatch.className = 'color-swatch';
+        swatch.style.backgroundColor = hex;
+        swatch.title = hex;
+        swatchesContainer.appendChild(swatch);
+    });
