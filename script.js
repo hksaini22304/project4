@@ -341,3 +341,50 @@ function renderFavorites() {
         favoritesContainer.appendChild(card);
     });
 }
+
+function renderFavoriteCard(look) {
+    const card = document.createElement('div');
+    card.className = 'favorite-card';
+    
+    const moodEmojis = {
+        "Soft Glam": "✨",
+        "Clean Girl": "🌸",
+        "Coquette": "💕",
+        "Bold": "🔥",
+        "Grunge": "🖤"
+    };
+    const occasionEmojis = {
+        "everyday": "☀️",
+        "date-night": "🌙",
+        "party": "🎉",
+        "wedding": "💍",
+        "photoshoot": "📸"
+    };
+    const moodEmoji = moodEmojis[look.mood] || "✨";
+    const occasionEmoji = look.occasion ? (occasionEmojis[look.occasion] || "📅") : "";
+    const occasionLabelText = look.occasion ? look.occasion.split('-').map(word => 
+        word.charAt(0).toUpperCase() + word.slice(1)
+    ).join(' ') : '';
+    
+    card.innerHTML = `
+        <h3>${moodEmoji} ${look.mood}</h3>
+        <p class="mood-label">${moodEmoji} Mood: ${look.mood}</p>
+        ${look.occasion ? `<p class="occasion-label">${occasionEmoji} Occasion: ${occasionLabelText}</p>` : ''}
+        <div class="color-swatches"></div>
+        <div class="products-container">
+            <div class="product-category">
+                <h4>Face</h4>
+                <ul class="face-list"></ul>
+            </div>
+            <div class="product-category">
+                <h4>Eyes</h4>
+                <ul class="eyes-list"></ul>
+            </div>
+            <div class="product-category">
+                <h4>Lips</h4>
+                <ul class="lips-list"></ul>
+            </div>
+        </div>
+        <button class="remove-btn" data-id="${look.id}">🗑️ Remove from Favorites</button>
+    `;
+    
