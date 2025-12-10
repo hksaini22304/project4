@@ -422,3 +422,11 @@ function saveCurrentLookToFavorites() {
         alert('✨ No look to save! Generate a look first.');
         return;
     }
+   // Check if already saved
+    const exists = state.favoriteLooks.some(look => look.id === state.currentLook.id);
+    if (exists) {
+        alert('💕 This look is already in your favorites!');
+        return;
+    }
+
+    
