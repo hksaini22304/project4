@@ -406,4 +406,12 @@ function renderFavoriteCard(look) {
     renderProductList(faceList, look.products.face);
     renderProductList(eyesList, look.products.eyes);
     renderProductList(lipsList, look.products.lips);
-     
+    
+    // Add remove button event listener
+    const removeBtn = card.querySelector('.remove-btn');
+    removeBtn.addEventListener('click', () => {
+        removeFavoriteLook(look.id);
+    });
+    
+    return card;
+}
