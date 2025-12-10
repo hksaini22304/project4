@@ -507,3 +507,31 @@ function openColorPicker(swatch, index, look) {
     modal.id = 'color-picker-modal';
     modal.className = 'color-picker-modal';
     
+     // Create modal content
+    const modalContent = document.createElement('div');
+    modalContent.className = 'color-picker-content';
+    
+    modalContent.innerHTML = `
+        <h3>🎨 Adjust Color</h3>
+        <div class="color-picker-wrapper">
+            <div class="current-color-display">
+                <div class="color-preview" style="background-color: ${look.palette[index]}"></div>
+                <p class="hex-display">${look.palette[index]}</p>
+            </div>
+            <input type="color" id="color-input" value="${look.palette[index]}" class="color-input">
+            <div class="color-picker-buttons">
+                <button class="color-btn apply-btn">✅ Apply</button>
+                <button class="color-btn cancel-btn">❌ Cancel</button>
+            </div>
+        </div>
+    `;
+    
+    modal.appendChild(modalContent);
+    document.body.appendChild(modal);
+    
+    const colorInput = modalContent.querySelector('#color-input');
+    const colorPreview = modalContent.querySelector('.color-preview');
+    const hexDisplay = modalContent.querySelector('.hex-display');
+    const applyBtn = modalContent.querySelector('.apply-btn');
+    const cancelBtn = modalContent.querySelector('.cancel-btn');
+    
