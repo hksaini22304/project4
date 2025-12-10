@@ -500,4 +500,10 @@ function openColorPicker(swatch, index, look) {
     if (existingPicker) {
         existingPicker.remove();
     }
+
+    
+    // Create modal overlay
+    const modal = document.createElement('div');
+    modal.id = 'color-picker-modal';
+    modal.className = 'color-picker-modal';
     
