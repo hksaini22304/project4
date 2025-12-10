@@ -570,3 +570,29 @@ function openColorPicker(swatch, index, look) {
     };
     document.addEventListener('keydown', escapeHandler);
 }
+
+function updateColorInPalette(index, newColor, look) {
+    // Update the palette
+    look.palette[index] = newColor;
+    
+    // Update the swatch
+    const swatch = colorSwatches.querySelector(`[data-index="${index}"]`);
+    if (swatch) {
+        swatch.style.backgroundColor = newColor;
+        swatch.title = `Click to adjust: ${newColor}`;
+        swatch.dataset.hex = newColor;
+    }
+    
+    // Update current look in state
+    state.currentLook = look;
+    
+    // Re-render to show reset button if needed
+    if (JSON.stringify(look.palette) !== JSON.stringify(look.originalPalette)) {
+        addResetPaletteButton(look);
+    } else {
+        const existingReset = document.querySelector('.reset-palette-btn');
+        if (existingReset) {
+            existingReset.remove();
+        }
+    }
+}
