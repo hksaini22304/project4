@@ -535,3 +535,9 @@ function openColorPicker(swatch, index, look) {
     const applyBtn = modalContent.querySelector('.apply-btn');
     const cancelBtn = modalContent.querySelector('.cancel-btn');
     
+     // Update preview as user changes color
+    colorInput.addEventListener('input', (e) => {
+        const newColor = e.target.value.toUpperCase();
+        colorPreview.style.backgroundColor = newColor;
+        hexDisplay.textContent = newColor;
+    });
