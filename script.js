@@ -434,3 +434,8 @@ function saveCurrentLookToFavorites() {
     saveFavoritesToStorage();
     renderFavorites();
     
+     // Show feedback
+    const originalText = saveFavoriteBtn.textContent;
+    saveFavoriteBtn.textContent = '💖 Saved! ✓';
+    saveFavoriteBtn.style.background = 'linear-gradient(135deg, #90EE90 0%, #7FCD7F 100%)';
+    
