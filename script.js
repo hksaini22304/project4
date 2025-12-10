@@ -492,3 +492,12 @@ function renderTips(mood) {
         tipsList.appendChild(li);
     });
 }
+
+// Color Picker Functions
+function openColorPicker(swatch, index, look) {
+    // Remove existing color picker if any
+    const existingPicker = document.getElementById('color-picker-modal');
+    if (existingPicker) {
+        existingPicker.remove();
+    }
+    
