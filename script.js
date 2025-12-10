@@ -439,3 +439,14 @@ function saveCurrentLookToFavorites() {
     saveFavoriteBtn.textContent = '💖 Saved! ✓';
     saveFavoriteBtn.style.background = 'linear-gradient(135deg, #90EE90 0%, #7FCD7F 100%)';
     
+    setTimeout(() => {
+        saveFavoriteBtn.textContent = originalText;
+        saveFavoriteBtn.style.background = '';
+    }, 2000);
+}
+
+function removeFavoriteLook(lookId) {
+    state.favoriteLooks = state.favoriteLooks.filter(look => look.id !== lookId);
+    saveFavoritesToStorage();
+    renderFavorites();
+}
