@@ -549,3 +549,7 @@ function openColorPicker(swatch, index, look) {
         modal.remove();
     });
     
+     // Cancel
+    cancelBtn.addEventListener('click', () => {
+        modal.remove();
+    });
