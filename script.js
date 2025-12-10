@@ -465,3 +465,30 @@ function renderTips(mood) {
     if (vibeKey && state.tipsData[vibeKey]) {
         tips = [...state.tipsData[vibeKey]];
     }
+
+      // Add some general tips as well
+    if (state.tipsData.general) {
+        // Randomly select 2-3 general tips
+        const generalTips = [...state.tipsData.general].sort(() => 0.5 - Math.random()).slice(0, 2);
+        tips = [...tips, ...generalTips];
+    }
+    
+    // Shuffle and limit to 3-4 tips
+    tips = tips.sort(() => 0.5 - Math.random()).slice(0, 4);
+    
+    if (tips.length === 0) {
+        const li = document.createElement('li');
+        li.textContent = '💭 No tips available';
+        li.style.color = '#999';
+        li.style.fontStyle = 'italic';
+        tipsList.appendChild(li);
+        return;
+    }
+    
+    tips.forEach(tip => {
+        const li = document.createElement('li');
+        li.className = 'tip-item';
+        li.textContent = tip;
+        tipsList.appendChild(li);
+    });
+}
