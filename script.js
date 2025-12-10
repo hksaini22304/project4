@@ -456,3 +456,12 @@ function renderTips(mood) {
     if (!state.tipsData || !tipsList) return;
     
     tipsList.innerHTML = '';
+
+      // Find the vibe key from mood label
+    const vibeKey = Object.keys(VIBES).find(key => VIBES[key].label === mood);
+    
+    // Get tips for the specific vibe, or general tips if not found
+    let tips = [];
+    if (vibeKey && state.tipsData[vibeKey]) {
+        tips = [...state.tipsData[vibeKey]];
+    }
