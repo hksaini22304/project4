@@ -429,4 +429,8 @@ function saveCurrentLookToFavorites() {
         return;
     }
 
+     // Add to favorites
+    state.favoriteLooks.push(state.currentLook);
+    saveFavoritesToStorage();
+    renderFavorites();
     
