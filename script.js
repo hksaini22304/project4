@@ -541,3 +541,11 @@ function openColorPicker(swatch, index, look) {
         colorPreview.style.backgroundColor = newColor;
         hexDisplay.textContent = newColor;
     });
+
+     // Apply color change
+    applyBtn.addEventListener('click', () => {
+        const newColor = colorInput.value.toUpperCase();
+        updateColorInPalette(index, newColor, look);
+        modal.remove();
+    });
+    
