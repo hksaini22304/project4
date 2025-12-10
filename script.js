@@ -397,3 +397,13 @@ function renderFavoriteCard(look) {
         swatch.title = hex;
         swatchesContainer.appendChild(swatch);
     });
+
+     // Render products
+    const faceList = card.querySelector('.face-list');
+    const eyesList = card.querySelector('.eyes-list');
+    const lipsList = card.querySelector('.lips-list');
+    
+    renderProductList(faceList, look.products.face);
+    renderProductList(eyesList, look.products.eyes);
+    renderProductList(lipsList, look.products.lips);
+     
