@@ -450,3 +450,9 @@ function removeFavoriteLook(lookId) {
     saveFavoritesToStorage();
     renderFavorites();
 }
+
+// Tips Rendering Function
+function renderTips(mood) {
+    if (!state.tipsData || !tipsList) return;
+    
+    tipsList.innerHTML = '';
