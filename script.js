@@ -415,3 +415,10 @@ function renderFavoriteCard(look) {
     
     return card;
 }
+
+// Favorites Functionality
+function saveCurrentLookToFavorites() {
+    if (!state.currentLook) {
+        alert('✨ No look to save! Generate a look first.');
+        return;
+    }
