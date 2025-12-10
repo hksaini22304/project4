@@ -596,3 +596,29 @@ function updateColorInPalette(index, newColor, look) {
         }
     }
 }
+
+function addResetPaletteButton(look) {
+    // Remove existing reset button if any
+    const existingReset = document.querySelector('.reset-palette-btn');
+    if (existingReset) {
+        existingReset.remove();
+    }
+    
+    // Add reset button
+    const resetBtn = document.createElement('button');
+    resetBtn.className = 'reset-palette-btn';
+    resetBtn.textContent = '🔄 Reset to Original Colors';
+    resetBtn.addEventListener('click', () => {
+        look.palette = [...look.originalPalette];
+        state.currentLook = look;
+        renderCurrentLook();
+    });
+    
+    // Insert after color swatches
+    const paletteSection = document.querySelector('.palette-section');
+    if (paletteSection) {
+        paletteSection.appendChild(resetBtn);
+    }
+}
+
+
